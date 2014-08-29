@@ -1,0 +1,16 @@
+Package: loadr
+Type: Package
+Title: Load Apportionment Model for R.
+Version: 0.1
+Date: 2014-08-18
+Authors@R: "John Douglass <john.douglass@environment-agency.gov.uk> [aut, cre]"
+Maintainer: John Douglass <john.douglass@environment-agency.gov.uk>
+Description: An R implementation of the Load Apportionment Model by Bowes et
+    al. Takes vectors of concurrent pollutant concentration and flow values to
+    compute point and diffuse source components of pollutant concentration.
+Depends:
+    R (>= 3.1.0),
+    ggplot2,
+    gridExtra
+License: NULL
+LazyData: true
