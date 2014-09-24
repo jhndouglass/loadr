@@ -102,7 +102,7 @@ LAMnls <- function (Q, Co, pars = c(A = 1, B = 1, C = 1, D = 1), b.upper = 1,
                                    control = list(maxit = 1000))
                 pars2 <- optim.out[[1]]
                 if (pars2[1] == 0 || pars2[3] == 0) {
-                        stop("A or B paramter estimated at zero. Location: optim")}
+                        warning("A or C paramter estimated at zero. Location: optim")}
                 if (method == "port") {
                         type <- "nls-optim-port"
                         nls.out <- nls(lam.mod, start = pars2,
@@ -121,12 +121,12 @@ LAMnls <- function (Q, Co, pars = c(A = 1, B = 1, C = 1, D = 1), b.upper = 1,
         }
         summ <- summary(nls.out)
         pars3 <- coef(summ)
-        if ((pars3[2] > 0.9 && pars3[2] < 1.1) &&
+        if ((pars3[2] > 0.9 && pars3[2] < 1.1) ||
                     (pars3[4] > 0.9 && pars3[4] < 1.1)){
                 warning("Check output. Conc ~ Q may have insufficient gradient")
         }
         if (pars3[1] == 0 || pars3[3] == 0) {
-                stop("A or B paramter estimated at zero. Location: nls")}
+                warning("A or C paramter estimated at zero. Location: nls")}
         fitted <- LAMout(dat, pars3)
         xover <- ((pars3[[1]] / pars3[[3]]) ^
                           (1 / (pars3[[4]] - pars3[[2]])))

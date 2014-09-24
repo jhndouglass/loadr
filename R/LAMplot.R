@@ -59,7 +59,7 @@ LAMplot <- function(x, y, ...){
 
         # components
         gg3 <- ggplot(data = foo, aes(Q, Co))
-        gg3 <- gg3 + geom_path(aes(Q, Fp), size = linewidth, colour = "yellow3")
+        gg3 <- gg3 + geom_path(aes(Q, Fp), size = linewidth, colour = "firebrick4")
         gg3 <- gg3 + geom_path(aes(Q, Fd), size = linewidth, colour = "steelblue3")
         gg3 <- gg3 + geom_path(aes(Q, Fpred), size = linewidth, colour = "seagreen")
         gg3 <- gg3 + geom_point(size = rel(pointsize),
@@ -86,6 +86,12 @@ LAMplot <- function(x, y, ...){
         gg4 <- gg4 + annotate("text", x = 0.3, y = 0.8,
                               label = paste("% samples PS dominated = ",
                                             round(x$ps.time, 2)))
+        gg4 <- gg4 + annotate("text", x = 0.3, y = 0.7, label = "LAM fit",
+                              col = "seagreen", face = "bold")
+        gg4 <- gg4 + annotate("text", x = 0.3, y = 0.6, label = "LAM diffuse fit",
+                              col = "steelblue3", face = "bold")
+        gg4 <- gg4 + annotate("text", x = 0.3, y = 0.5, label = "LAM point fit",
+                              col = "firebrick4", face = "bold")
         gg4 <- gg4 + theme(plot.title = element_blank(),
                            axis.title.x = element_blank(),
                            axis.title.y = element_blank(),

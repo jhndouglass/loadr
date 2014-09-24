@@ -69,11 +69,11 @@ LAM <- function (Q, Co, pars = c(A = 1, B = 1, C = 1, D = 1), b.upper = 1){
                            lower = c(0, 0, 0, 1), upper = c(Inf, b.upper, Inf, Inf),
                            control = list(maxit = 1000))
         pars2 <- optim.out[[1]]
-        if ((pars2[2] > 0.9 && pars2[2] < 1.1) &&
+        if ((pars2[2] > 0.9 && pars2[2] < 1.1) ||
                     (pars2[4] > 0.9 && pars2[4] < 1.1)){
                 warning("Check output. Conc ~ Q may have insufficient gradient")}
         if (pars2[1] == 0 || pars2[3] == 0) {
-                stop("A or B paramter estimated at zero.")}
+                warning("A or C paramter estimated at zero.")}
         fitted <- LAMout(dat, optim.out[[1]])
         xover <- ((optim.out[[1]][[1]] / optim.out[[1]][[3]]) ^
                           (1 / (optim.out[[1]][[4]] - optim.out[[1]][[2]])))
