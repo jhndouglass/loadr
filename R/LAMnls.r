@@ -121,10 +121,8 @@ LAMnls <- function (Q, Co, pars = c(A = 1, B = 1, C = 1, D = 1), b.upper = 1,
         }
         summ <- summary(nls.out)
         pars3 <- coef(summ)
-        if ((pars3[2] > 0.9 && pars3[2] < 1.1) ||
-                    (pars3[4] > 0.9 && pars3[4] < 1.1)){
-                warning("Check output. Conc ~ Q may have insufficient gradient")
-        }
+        if (pars2[4] > 0.9 && pars2[4] < 1.1){
+            warning("Check output. Conc ~ Q may have insufficient gradient")}
         if (pars3[1] == 0 || pars3[3] == 0) {
                 warning("A or C paramter estimated at zero. Location: nls")}
         fitted <- LAMout(dat, pars3)

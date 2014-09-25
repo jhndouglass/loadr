@@ -9,8 +9,9 @@ Description: An R implementation of the Load Apportionment Model by Bowes et
     al. Takes vectors of concurrent pollutant concentration and flow values to
     compute point and diffuse source components of pollutant concentration.
 Depends:
-    R (>= 3.1.0),
+    R (>= 3.1.0)
+Imports:
     ggplot2,
-    gridExtra
-License: NULL
+    grid
+License: GPL-3
 LazyData: true

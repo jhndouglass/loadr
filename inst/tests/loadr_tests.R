@@ -8,6 +8,7 @@ data(stour)
 wensumLAM <- LAM(wensum$Q, wensum$TP)
 summary(wensumLAM)
 LAMplot(wensumLAM)
+wensumLAM
 
 tillLAM <- LAM(till$Q, till$TP)
 summary(tillLAM)
