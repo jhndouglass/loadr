@@ -3,12 +3,10 @@
 \alias{LAMplot}
 \title{Plot "LAM" object}
 \usage{
-LAMplot(x, y, ...)
+LAMplot(x, ...)
 }
 \arguments{
 \item{x}{a "LAM" object}
-
-\item{y}{is ignored}
 
 \item{...}{further arguments passed to and from other methods}
 }

@@ -3,12 +3,10 @@
 \alias{LAMnlsplot}
 \title{Plot "LAMnls" object}
 \usage{
-LAMnlsplot(x, y, ...)
+LAMnlsplot(x, ...)
 }
 \arguments{
 \item{x}{a "LAMnls" object}
-
-\item{y}{is ignored}
 
 \item{...}{further arguments passed to and from other methods}
 }
