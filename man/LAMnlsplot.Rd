@@ -3,10 +3,12 @@
 \alias{LAMnlsplot}
 \title{Plot "LAMnls" object}
 \usage{
-LAMnlsplot(x, ...)
+LAMnlsplot(x, unit = "Ml/d", ...)
 }
 \arguments{
 \item{x}{a "LAMnls" object}
+
+\item{unit}{unit of flow as a text string. Used in labelling of plots.}
 
 \item{...}{further arguments passed to and from other methods}
 }

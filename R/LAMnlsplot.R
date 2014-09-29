@@ -8,6 +8,7 @@
 #'      not used
 #'
 #' @param x a "LAMnls" object
+#' @param unit unit of flow as a text string. Used in labelling of plots.
 #' @param ... further arguments passed to and from other methods
 #'
 #' @examples
@@ -20,7 +21,7 @@
 #'      LAMnlsplot(LAMwensumnls)
 #'
 #' @export
-LAMnlsplot <- function(x, ...){
+LAMnlsplot <- function(x, unit = "Ml/d", ...){
         foo <- data.frame(Fpred = fitted(x), x$diffuse.point, x$raw)
         foo <- foo[order(foo$Q), ]
         linewidth <- 0.8
@@ -84,7 +85,7 @@ LAMnlsplot <- function(x, ...){
                               size = ggplot2::rel(plottext))
         gg4 <- gg4 + ggplot2::annotate("text", x = 0.3, y = 0.9,
                               label = paste("Q xover point = ", round(x$xover, 2),
-                                            " flow units"),
+                                            unit),
                               size = ggplot2::rel(plottext))
         gg4 <- gg4 + ggplot2::annotate("text", x = 0.3, y = 0.8,
                               label = paste("% samples PS dominated = ",
