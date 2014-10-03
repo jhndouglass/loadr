@@ -14,7 +14,16 @@
 #' @return
 #'      \itemize{
 #'              \item \code{Fpred} fitted values
+#'              \item \code{Fp} point source contribution to \code{Fpred}
 #'              \item \code{Fd} diffuse source contribution to \code{Fpred}
+#'              \item \code{Fp.load} instantaneous point source load. Units
+#'              are arbitary and dependent on input units
+#'              \item \code{Fd.load} instantaneous diffuse source load. Units
+#'              are arbitary and dependent on input units
+#'              \item \code{Fp.load.day} Daily point source load. Units
+#'              are arbitary and dependent on input units
+#'              \item \code{Fd.load.day} Daily diffuse source load. Units
+#'              are arbitary and dependent on input units
 #'      }
 #' @export
 
@@ -24,5 +33,12 @@ LAMout <- function (data, pars){
         Fd <- pars[3] * (Q ^ (pars[4] -1))
         Fp <- pars[1] * (Q ^ (pars[2] -1))
 
-        return(list(Fpred = Fpred, Fd = Fd, Fp = Fp))
+        Fd.load <- Fd * Q
+        Fp.load <- Fp * Q
+        Fd.load.day <- (((Fd.load * 60) * 60) * 24)
+        Fp.load.day <- (((Fp.load * 60) * 60) * 24)
+
+        return(list(Fpred = Fpred, Fd = Fd, Fp = Fp, Fp.load = Fp.load,
+                    Fd.load = Fd.load, Fp.load.day = Fp.load.day,
+                    Fd.load.day = Fd.load.day))
 }

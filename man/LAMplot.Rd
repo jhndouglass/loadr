@@ -3,12 +3,15 @@
 \alias{LAMplot}
 \title{Plot "LAM" object}
 \usage{
-LAMplot(x, unit = "Ml/d", ...)
+LAMplot(x, f.unit = "cumecs", c.unit = expression("ugl"^-1), ...)
 }
 \arguments{
 \item{x}{a "LAM" object}
 
-\item{unit}{unit of flow as a text string. Used in labelling of plots.}
+\item{f.unit}{unit of flow as a text string. Used in labelling of plots.}
+
+\item{c.unit}{unit of concentration as a text string. Used in labelling of
+plots.}
 
 \item{...}{further arguments passed to and from other methods}
 }

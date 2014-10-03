@@ -14,7 +14,16 @@ LAMout(data, pars)
 \value{
 \itemize{
              \item \code{Fpred} fitted values
+             \item \code{Fp} point source contribution to \code{Fpred}
              \item \code{Fd} diffuse source contribution to \code{Fpred}
+             \item \code{Fp.load} instantaneous point source load. Units
+             are arbitary and dependent on input units
+             \item \code{Fd.load} instantaneous diffuse source load. Units
+             are arbitary and dependent on input units
+             \item \code{Fp.load.day} Daily point source load. Units
+             are arbitary and dependent on input units
+             \item \code{Fd.load.day} Daily diffuse source load. Units
+             are arbitary and dependent on input units
      }
 }
 \description{

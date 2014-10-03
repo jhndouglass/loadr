@@ -52,6 +52,8 @@
 #'              \item \code{ps.time} percentage of samples (or time in some
 #'              cirumstances) where point source inputs are greater than diffuse
 #'               source inputs
+#'               \item \code{ps.load} percentage of load derived from point
+#'               sources
 #'      }
 #'
 #' @references Bowes MJ, Smith JT, Javie H, Neal C (2008). Modelling of
@@ -129,12 +131,14 @@ LAMnls <- function (Q, Co, pars = c(A = 1, B = 1, C = 1, D = 1), b.upper = 1,
         xover <- ((pars3[[1]] / pars3[[3]]) ^
                           (1 / (pars3[[4]] - pars3[[2]])))
         ps.time <- (length(Q[Q < xover]) / length(Q)) * 100
+        ps.load <- (sum(fitted$Fp.load.day)/(sum(fitted$Fp.load.day) +
+                                                 sum(fitted$Fd.load.day))) * 100
         call <- match.call()
         ll <-  list(nls.summary.out = summ, pars = pars3,
                     fitted.values = fitted[[1]], residuals = resid(summ),
                     diffuse.points = fitted[-1], raw = raw <- dat,
-                    xover = xover, ps.time = ps.time, type = type,
-                    nls.out = nls.out, call = call)
+                    xover = xover, ps.time = ps.time, ps.load = ps.load,
+                    type = type, nls.out = nls.out, call = call)
         class(ll) <- "LAMnls"
         return(ll)
 }
@@ -161,6 +165,8 @@ LAMnls <- function (Q, Co, pars = c(A = 1, B = 1, C = 1, D = 1), b.upper = 1,
 #'              \item \code{PointSourceDominatedPercentage} percentage of
 #'              samples (or time in some cirumstances) where point source inputs
 #'              are greater than diffuse source inputs
+#'              \item \code{ps.load} percentage of load derived from point
+#'               sources
 #'      }
 #'
 #' @examples
@@ -183,6 +189,7 @@ summary.LAMnls <- function(object, ...){
         output$SumofSq <- sum(object$residuals^2)
         output$CrossOverFlow <- object$xover
         output$PointSourceDominatedPercentage <- object$ps.time
+        output$PointSourceLoadPercentage <- object$ps.load
         output
 }
 

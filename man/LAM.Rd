@@ -35,6 +35,8 @@ The function \code{summary} can be used to obtain and print a
              \item \code{ps.time} percentage of samples (or time in some
              cirumstances) where point source inputs are greater than diffuse
               source inputs
+              \item \code{ps.load} percentage of load derived from point
+              sources
      }
 }
 \description{

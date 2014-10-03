@@ -8,7 +8,9 @@
 #'      not used
 #'
 #' @param x a "LAM" object
-#' @param unit unit of flow as a text string. Used in labelling of plots.
+#' @param f.unit unit of flow as a text string. Used in labelling of plots.
+#' @param c.unit unit of concentration as a text string. Used in labelling of
+#'      plots.
 #' @param ... further arguments passed to and from other methods
 #'
 #' @examples
@@ -21,7 +23,8 @@
 #'      LAMplot(LAMwensum)
 #'
 #' @export
-LAMplot <- function(x, unit = "Ml/d", ...){
+LAMplot <- function(x, f.unit = "cumecs",
+                    c.unit = expression("ugl"^-1), ...){
         foo <- data.frame(Fpred = fitted(x), x$diffuse.point, x$raw)
         foo <- foo[order(foo$Q), ]
         linewidth <- 0.8
@@ -36,7 +39,7 @@ LAMplot <- function(x, unit = "Ml/d", ...){
                                                            fill = "goldenrod2",
                                                            size = ggplot2::rel(linewidth), alpha = 0.3)
         gg <- gg + ggplot2::geom_point(size = ggplot2::rel(pointsize), alpha = pointalpha)
-        gg <- gg + ggplot2::labs(title = "Linear model", x = "Q", y = "Conc.")
+        gg <- gg + ggplot2::labs(title = "Linear model", x = f.unit, y = c.unit)
         gg <- gg + ggplot2::theme(plot.title = ggplot2::element_text(size = ggplot2::rel(titlesize)),
                          axis.title.x = ggplot2::element_text(size = ggplot2::rel(axissize)),
                          axis.title.y = ggplot2::element_text(size = ggplot2::rel(axissize)),
@@ -49,7 +52,7 @@ LAMplot <- function(x, unit = "Ml/d", ...){
         gg2 <- gg2 + ggplot2::geom_path(ggplot2::aes(Q, Fpred), size = linewidth, colour = "seagreen")
         gg2 <- gg2 + ggplot2::geom_point(size = ggplot2::rel(pointsize),
                                 alpha = pointalpha)
-        gg2 <- gg2 + ggplot2::labs(title = "LAM", x = "Q", y = "Conc.")
+        gg2 <- gg2 + ggplot2::labs(title = "LAM", x = f.unit, y = c.unit)
         gg2 <- gg2 + ggplot2::theme(plot.title = ggplot2::element_text(size = ggplot2::rel(titlesize)),
                            axis.title.x = ggplot2::element_text(size = ggplot2::rel(axissize)),
                            axis.title.y = ggplot2::element_text(size = ggplot2::rel(axissize)),
@@ -64,7 +67,7 @@ LAMplot <- function(x, unit = "Ml/d", ...){
         gg3 <- gg3 + ggplot2::geom_path(ggplot2::aes(Q, Fpred), size = linewidth, colour = "seagreen")
         gg3 <- gg3 + ggplot2::geom_point(size = ggplot2::rel(pointsize),
                                 alpha = pointalpha)
-        gg3 <- gg3 + ggplot2::labs(title = "LAM - Components", x = "Q", y = "Conc.")
+        gg3 <- gg3 + ggplot2::labs(title = "LAM - Components", x = f.unit, y = c.unit)
         gg3 <- gg3 + ggplot2::theme(plot.title = ggplot2::element_text(size = ggplot2::rel(titlesize)),
                            axis.title.x = ggplot2::element_text(size = ggplot2::rel(axissize)),
                            axis.title.y = ggplot2::element_text(size = ggplot2::rel(axissize)),
@@ -85,17 +88,21 @@ LAMplot <- function(x, unit = "Ml/d", ...){
                                        size = ggplot2::rel(plottext))
         gg4 <- gg4 + ggplot2::annotate("text", x = 0.3, y = 0.9,
                                        label = paste("Q xover point = ", round(x$xover, 2),
-                                                      unit),
+                                                      f.unit),
                                        size = ggplot2::rel(plottext))
         gg4 <- gg4 + ggplot2::annotate("text", x = 0.3, y = 0.8,
                                        label = paste("% samples PS dominated = ",
                                                      round(x$ps.time, 2)),
                                        size = ggplot2::rel(plottext))
-        gg4 <- gg4 + ggplot2::annotate("text", x = 0.3, y = 0.7, label = "LAM fit",
+        gg4 <- gg4 + ggplot2::annotate("text", x = 0.3, y = 0.7,
+                                       label = paste("% of load from point sources = ",
+                                                     round(x$ps.load, 2)),
+                                       size = ggplot2::rel(plottext))
+        gg4 <- gg4 + ggplot2::annotate("text", x = 0.3, y = 0.6, label = "LAM fit",
                                        col = "seagreen", size = ggplot2::rel(plottext))
-        gg4 <- gg4 + ggplot2::annotate("text", x = 0.3, y = 0.6, label = "LAM diffuse fit",
+        gg4 <- gg4 + ggplot2::annotate("text", x = 0.3, y = 0.5, label = "LAM diffuse fit",
                                        col = "steelblue3", size = ggplot2::rel(plottext))
-        gg4 <- gg4 + ggplot2::annotate("text", x = 0.3, y = 0.5, label = "LAM point fit",
+        gg4 <- gg4 + ggplot2::annotate("text", x = 0.3, y = 0.4, label = "LAM point fit",
                                        col = "firebrick4", size = ggplot2::rel(plottext))
         gg4 <- gg4 + ggplot2::theme(plot.title = ggplot2::element_blank(),
                                     axis.title.x = ggplot2::element_blank(),
