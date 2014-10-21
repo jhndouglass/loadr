@@ -3,9 +3,6 @@
 #' @description
 #'      Plots a four panel graphic summairsing Load Apportionment Model fits.
 #'
-#' @details
-#'      \code{y} is included for consistency with generic \code{print} but is
-#'      not used
 #'
 #' @param x a "LAM" object
 #' @param f.unit unit of flow as a text string. Used in labelling of plots.

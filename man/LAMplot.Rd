@@ -18,10 +18,6 @@ plots.}
 \description{
 Plots a four panel graphic summairsing Load Apportionment Model fits.
 }
-\details{
-\code{y} is included for consistency with generic \code{print} but is
-     not used
-}
 \examples{
 data(wensum)
      Q <- wensum$Q

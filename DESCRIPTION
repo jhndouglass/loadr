@@ -1,7 +1,7 @@
 Package: loadr
 Type: Package
 Title: Load Apportionment Model for R.
-Version: 0.1
+Version: 0.2
 Date: 2014-08-18
 Authors@R: "John Douglass <john.douglass@environment-agency.gov.uk> [aut, cre]"
 Maintainer: John Douglass <john.douglass@environment-agency.gov.uk>
