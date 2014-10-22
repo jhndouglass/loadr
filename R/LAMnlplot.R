@@ -1,4 +1,4 @@
-#' @title Plot "LAMnls" object
+#' @title Plot "LAMnl" object
 #'
 #' @description
 #'      Plots a four panel graphic summairsing Load Apportionment Model fits.
@@ -7,7 +7,7 @@
 #'      \code{y} is included for consistency with generic \code{print} but is
 #'      not used
 #'
-#' @param x a "LAMnls" object
+#' @param x a "LAMnl" object
 #' @param f.unit unit of flow as a text string. Used in labelling of plots.
 #' @param c.unit unit of concentration as a text string. Used in labelling of
 #'      plots.
@@ -18,12 +18,12 @@
 #'      Q <- wensum$Q
 #'      Co <- wensum$TP
 #'
-#'      LAMwensumnls <- LAMnls(Q, Co)
+#'      LAMwensumnlxb <- LAMnlxb(Q, Co)
 #'
-#'      LAMnlsplot(LAMwensumnls)
+#'      LAMnlplot(LAMwensumnlxb)
 #'
 #' @export
-LAMnlsplot <- function(x, f.unit = "cumecs",
+LAMnlplot <- function(x, f.unit = "cumecs",
                        c.unit = expression("ugl"^-1), ...){
         foo <- data.frame(Fpred = fitted(x), x$diffuse.point, x$raw)
         foo <- foo[order(foo$Q), ]

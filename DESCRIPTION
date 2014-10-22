@@ -1,8 +1,8 @@
 Package: loadr
 Type: Package
 Title: Load Apportionment Model for R.
-Version: 0.2
-Date: 2014-08-18
+Version: 0.3
+Date: 2014-10-22
 Authors@R: "John Douglass <john.douglass@environment-agency.gov.uk> [aut, cre]"
 Maintainer: John Douglass <john.douglass@environment-agency.gov.uk>
 Description: An R implementation of the Load Apportionment Model by Bowes et
@@ -12,6 +12,7 @@ Depends:
     R (>= 3.1.0)
 Imports:
     ggplot2,
-    grid
+    grid,
+    nlmrt
 License: GPL-3
 LazyData: true

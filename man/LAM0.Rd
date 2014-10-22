@@ -27,7 +27,7 @@ The function \code{summary} can be used to obtain and print a
              \item \code{residuals} residuals
              \item \code{diffuse.point} list of 2 vectors; diffuse and
              point source contributions to \code{fitted.values}
-             \item \code{raw} list of 2 vectors; input Q and Co
+             \item \code{raw} list of 6 vectors; input Q and Co
              \item \code{xover} value of Q where diffuse contributions first
              exceed point
              \item \code{ps.time} percentage of samples (or time in some
@@ -67,7 +67,7 @@ data(wensum)
      LAMwensum0$pars ## get parameters
 
      ## specift starting values
-     LAMwensum02 <- LAM0(Q, Co, pars = c(50, 300, 0))
+     LAMwensum02 <- LAM0(Q, Co, pars = c(50, 300, 2))
      LAMplot(LAMwensum02)
 }
 \references{
